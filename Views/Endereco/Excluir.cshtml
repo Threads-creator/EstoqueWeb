@@ -1,0 +1,18 @@
+@model EnderecoModel
+@{
+    ViewBag.Subtitulo = "Exclusão de Endereço";
+    var cliente = ViewBag.Cliente as ClienteModel;
+}
+
+<h1 class="text-primary">@ViewBag.Subtitulo</h1>
+<hr>
+<h4>Deseja realmente excluir o Endereço <span class="text-danger">@Model.EnderecoCompleto</span> <br> do cliente @cliente.Nome ?</h4>
+
+<form asp-action="Excluir">
+    <input type="hidden" asp-for="@Model.IdEndereco">
+    <input type="hidden" asp-for="@cliente.IdUsuario" name="IdUsuario">
+    <div class="mt-3">
+        <a asp-action="Index" asp-route-cid="@cliente.IdUsuario" class="btn btn-success">Não</a>
+        <button type="submit" class="btn btn-danger">Sim</button>
+    </div>
+</form>
